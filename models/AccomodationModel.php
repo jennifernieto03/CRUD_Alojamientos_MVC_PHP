@@ -57,10 +57,10 @@ class AccomodationModel{
 
 // Probando datos
 
-    /*$datos = AccomodationModel::all();
+    $datos = AccomodationModel::all();
     echo "<pre>";
     var_dump($datos);
-    echo "</pre>";*/
+    echo "</pre>";
 
 /*$resultado = AccomodationModel::add(
     "Hostal El Sol", 
