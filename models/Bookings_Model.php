@@ -58,7 +58,20 @@ class BookingsModel{
         return $result;
     }
 
-    //pruebas
+    //buscando reservas por id de usuario   
+    public static function findAccomodationByUserID($id_user){
+        //conexion a la base
+        $pdo = Connection::getInstance()->getConnection();
+        //haciendo la consulta
+        $query = $pdo->prepare("SELECT bookings.id_user, bookings_accomodation.id_accomodation FROM bookings INNER JOIN bookings_accomodation ON bookings.id = bookings_accomodation.id_booking WHERE bookings.id_user = ?");
+        $query->execute([$id_user]);
+        $result = $query->fetchAll(PDO::FETCH_ASSOC); 
+        return $result;
+    }
+
+}
+
+//pruebas
     /*$datos = BookingsModel::all();
     echo "<pre>";
     var_dump($datos);   
@@ -79,5 +92,3 @@ class BookingsModel{
     echo "</pre>";*/
 
     
-
-}
