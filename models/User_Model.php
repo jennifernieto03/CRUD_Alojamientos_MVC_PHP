@@ -24,6 +24,17 @@ class UserModel{
         $result = $query->fetchAll(PDO::FETCH_ASSOC); //[]
         return $result;
     }
+
+    //Obtener alojamientos por id de usuario
+    public static function getAccomodationByUserID($id_user){
+        //conectandonos a la base de datos
+        $pdo = Connection::getInstance()->getConnection();
+        //haciendo la consulta
+        $query = $pdo->prepare("DELETE FROM accommodation_list WHERE `accommodation_list`.`id` = ?");
+        $result = $query->execute([$id_accomodation]);
+        return $result;
+    }
+
     /*
    //metodo para agregar un usuario nuevo
     public static function add($username, $password, $id_role){
