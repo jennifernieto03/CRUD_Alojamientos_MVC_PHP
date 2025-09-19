@@ -21,11 +21,10 @@ class Connection
             $password = $env['PASSWORD'];
             $port = $env['PORT'];
             $connection_url = $env['CONECTION_URL'];
-            
-            echo $connection_url;
+
             //tipo de conexion, host (servidor), nombre de base de datos
             $dsn = "mysql:host={$host};
-                    dbname={$database_name};};
+                    dbname={$database_name};
                     charset=utf8";
 
             $options = [
