@@ -24,27 +24,32 @@ class UserModel{
         $result = $query->fetchAll(PDO::FETCH_ASSOC); //[]
         return $result;
     }
-
-    //metodo para guardar una tarea
-    public function save(){
-
+    /*
+   //metodo para agregar un usuario nuevo
+    public static function add($username, $password, $id_role){
         $pdo = Connection::getInstance()->getConnection();
-        //preparar la consulta
-        $query = $pdo->prepare("INSERT INTO tasks (title, description, date_task, status, id_employee) VALUES (?, ?, ?, ?, ?)");
-        //pasamos como argumento los valores de los atributos de la clase
-        $result = $query->execute(["$this->title", "$this->description", "$this->date", "$this->status", $this->id_employee]);
-
-        // $query = $pdo->prepare("INSERT INTO tasks (title, description, date_task, status, id_employee) VALUES (:campo1, :campo2, :campo3, :campo4, :campo5)");
-        // $query->bindParam(":campo1", "$this->title");
-        // $query->bindParam(":campo2", "$this->description");
-        // $query->bindParam(":campo3", "$this->date");
-        // $query->bindParam(":campo4", "$this->status");
-        // $query->bindParam(":campo5", $this->id_employee); 
-        // $result = $query->execute();
-
+        $query = $pdo->prepare("INSERT INTO users (username, password, id_role) VALUES (?, ?, ?);");
+        $result = $query->execute(["$username", "$password", $id_role]);
         return $result;
     }
+    //agregar alojamientos
+    public static function delete($id_user){
+        $pdo = Connection::getInstance()->getConnection();
+        $query = $pdo->prepare("DELETE FROM users WHERE `users`.`id` = ?");
+        $result = $query->execute([$id_user]);
+        return $result;
+    }
+    //eliminar alojamientos
+    public static function findById($id_user){
+        $pdo = Connection::getInstance()->getConnection();
+        $query = $pdo->prepare("SELECT * FROM users WHERE id = ?");
+        $query->execute([$id_user]);
+        $result = $query->fetch(PDO::FETCH_ASSOC); 
+        return $result;
+    }
+    }*/
 
+    //metodo para guardar cambios en una tarea
     public static function edit($id_task, $title, $description){
         $pdo = Connection::getInstance()->getConnection();
         $query = $pdo->prepare("UPDATE tasks SET title = ?, description = ? WHERE id = ?");
