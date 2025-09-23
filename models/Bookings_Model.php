@@ -1,5 +1,7 @@
 <?php
 
+require_once '../config/database.php';
+
 class BookingsModel{
     
     public $id_booking;
@@ -38,7 +40,7 @@ class BookingsModel{
     }
 
     //eliminando reservas
-    public static function delete($id_booking){
+    public static function deleteByBookingID($id_booking){
         //conexion a la base
         $pdo = Connection::getInstance()->getConnection();
         //haciendo la consulta
@@ -58,16 +60,6 @@ class BookingsModel{
         return $result;
     }
 
-    //buscando reservas por id de usuario   
-    public static function findAccomodationByUserID($id_user){
-        //conexion a la base
-        $pdo = Connection::getInstance()->getConnection();
-        //haciendo la consulta
-        $query = $pdo->prepare("SELECT bookings.id_user, bookings_accomodation.id_accomodation FROM bookings INNER JOIN bookings_accomodation ON bookings.id = bookings_accomodation.id_booking WHERE bookings.id_user = ?");
-        $query->execute([$id_user]);
-        $result = $query->fetchAll(PDO::FETCH_ASSOC); 
-        return $result;
-    }
 
 }
 
@@ -82,13 +74,14 @@ class BookingsModel{
         "2024-07-10"
     );
     var_dump($resultado);*/
+
     /*$resultado = BookingsModel::delete(
         3
     );
     var_dump($resultado);*/
+
     /*$datos = BookingsModel::findByUserId(2);
     echo "<pre>";
     var_dump($datos);
     echo "</pre>";*/
-
     

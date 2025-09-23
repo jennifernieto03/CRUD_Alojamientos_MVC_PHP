@@ -31,6 +31,7 @@ class AccomodationModel{
         $result = $query->fetchAll(PDO::FETCH_ASSOC); //[]
         return $result;
     }
+    
 
     //Agregar nuevos alojamientos
     public static function add($name, $description, $ubication, $review, $image){
