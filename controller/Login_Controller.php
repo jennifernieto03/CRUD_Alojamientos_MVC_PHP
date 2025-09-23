@@ -1,7 +1,7 @@
 <?php
 
-require_once "../models/User_Model.php";
-require_once "../config/database.php";
+require_once './models/User_Model.php';
+require_once "./config/database.php";
 
 class LoginController{
 

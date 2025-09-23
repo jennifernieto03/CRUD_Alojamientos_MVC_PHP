@@ -1,7 +1,7 @@
 <?php
 
-require_once "../models/Accomodation_Model.php";
-require_once "../models/Bookings_Accomodation_Model.php";
+require_once "models/Accomodation_Model.php";
+require_once "models/Bookings_Accomodation_Model.php";
 require_once "../models/Bookings_Model.php";
 require_once "../interfaces/ICRUDAccomodations.php";
 
