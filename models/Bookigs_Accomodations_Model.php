@@ -18,7 +18,7 @@ class Bookings_AccomodationModel{
     }
 
     //buscando reservas e info de alojamiento por id de usuario   
-    public static function findAccomodationByUserID($id_user){
+    public static function findAccomodationByIDUser($id_user){
         //conexion a la base
         $pdo = Connection::getInstance()->getConnection();
         //haciendo la consulta

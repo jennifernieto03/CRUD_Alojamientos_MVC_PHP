@@ -10,7 +10,7 @@
     }
 
     require_once 'controller/Accomodation_Controller.php';
-    $accommodations = AccomodationController::getAccomodation();
+    $accommodations = Accomodation_Controller::getAccomodation();
 
 ?>
 <!DOCTYPE html>

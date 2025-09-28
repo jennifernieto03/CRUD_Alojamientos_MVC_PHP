@@ -21,21 +21,27 @@ class Accomodation_Controller implements ICRUDAccomodations{
 
     //Agregar alojamiento a la base de datos (Admin)
     public static function createAccomodation(AccomodationModel $Accomodation){
-        try{
-            $Accomodation->add();
-            //redireccionar a una vista
-            header('Location: ../views/listAccomodations.php');
-        }catch(Error $error){
-            return "Error al guardar los datos " . $error;
-        }
+    try {
+        AccomodationModel::add(
+            $Accomodation->name,
+            $Accomodation->description,
+            $Accomodation->ubication,
+            $Accomodation->review,
+            $Accomodation->image
+        );
+        header('Location: ../views/listAccomodations.php');
+    } catch(Error $error){
+        return "Error al guardar los datos " . $error;
     }
+}
+
 
     //Encontrar alojamiento por ID de usuario
-    public static function findAccomodationByUserID(){
+    public static function findAccomodationByUserID(Bookings_AccomodationModel $Bookings_accomodation){
         try{
             //ORM => (Mapeo-Objeto-Relacional)
             //find() => encontrar un registro en base a un ID
-            $list_accomodations = BookingsModel::findAccomodationByUserID(); //metodo mapeado
+            $list_accomodations = Bookings_AccomodationModel::findAccomodationByIDUser($Bookings_accomodation->id_user); //metodo mapeado
             return $list_accomodations;
         }catch(Error $error){
             return "Error al encontrar el alojamiento: " . $error;
@@ -43,11 +49,11 @@ class Accomodation_Controller implements ICRUDAccomodations{
     }
 
     //Eliminar alojamiento por ID de reserva
-    public static function deleteByBookingID(){
+    public static function deleteByBookingID(BookingsModel $Bookings){
         try{
             //ORM => (Mapeo-Objeto-Relacional)
             //find() => encontrar un registro en base a un ID
-            $list_accomodations = BookingsModel::deleteByBookingID(); //metodo mapeado
+            $list_accomodations = BookingsModel::deleteByBookingID($Bookings->id_user); //metodo mapeado
             return $list_accomodations;
         }catch(Error $error){
             return "Error al eliminar la reserva: " . $error;
