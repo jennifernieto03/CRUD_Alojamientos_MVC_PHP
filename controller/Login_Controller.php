@@ -1,36 +1,44 @@
 <?php
 
-require_once './models/User_Model.php';
+require_once "./models/User_Model.php";
 require_once "./config/database.php";
 
-class LoginController{
+class LoginController
+{
 
-    public static function login($username, $password){
-        //verificar si el usuario y la contraseña son correctos
-        $user = UserModel::findByEmailAndPassword($username, $password);
+    public static function login($username, $password)
+{
+    // Verificar si el usuario y la contraseña son correctos
+    $user = UserModel::findByEmailAndPassword($username, $password);
 
-        //si el empleado existe creamos la sesion y validamos el rol
-        if($user){
-
-            $role = $user['id_role'];
-            //crear sessiones
-            $_SESSION['username'] = $user['username'];
-            $_SESSION['id'] = $user['id'];
-
-            if($role == 1){
-                //redireccionar a la vista de administrador
-                header("Location: user.php");
-            }else{
-                //redireccionar a la vista de empleado
-                header("Location: admin.php");
-            }
-        }else{
-            echo "Correo o contraseña incorrectos";
-        }
+    // Validación si el usuario no existe
+    if (!$user) {
+        header("Location: login.php?error=usuario");
+        exit();
     }
 
+    // Validación si la contraseña es incorrecta
+    if ($user['password'] !== $password) {
+        header("Location: login.php?error=clave");
+        exit();
+    }
+
+    // Si el usuario existe y la contraseña es correcta
+    $role = $user['id_role'];
+    $_SESSION['username'] = $user['username'];
+    $_SESSION['id'] = $user['id'];
+
+    if ($role == 1) {
+        header("Location: user.php");
+    } else {
+        header("Location: admin.php");
+    }
+}
+
+
     //eliminar la sesion
-    public static function logout(){
+    public static function logout()
+    {
         //continuar la sesion
         session_start();
 

@@ -1,0 +1,35 @@
+/* Tonos institucionales */
+.text-purple {
+  color: #6f42c1; /* Tono púrpura Bootstrap */
+}
+
+.btn-purple {
+  background-color: #6f42c1;
+  color: white;
+  border: none;
+}
+
+.btn-purple:hover {
+  background-color: #5a379e;
+  color: white;
+}
+
+/* Fondo general */
+body {
+  background-color: #f4f0fa;
+}
+
+/* Tarjeta centrada */
+.card {
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+/* Enlaces */
+a.text-purple {
+  text-decoration: none;
+}
+
+a.text-purple:hover {
+  text-decoration: underline;
+}

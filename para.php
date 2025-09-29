@@ -1,13 +1,4 @@
 <?php 
-    session_start();
-    require_once 'controller/Login_Controller.php';
-
-    if(isset($_POST['email'], $_POST['password'])){
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-
-        LoginController::login($email, $password);
-    }
 
     require_once 'controller/Accomodation_Controller.php';
     $accommodations = Accomodation_Controller::getAccomodation();
@@ -65,7 +56,6 @@
                                 <p class="card-text"><?= htmlspecialchars($item['description']) ?></p>
                                 <ul class="list-unstyled">
                                     <li>📍 <?= htmlspecialchars($item['ubication']) ?></li>
-                                    <li>💶 €<?= htmlspecialchars($item['price']) ?>/noche</li>
                                     <li>⭐ <?= htmlspecialchars($item['review']) ?></li>
                                 </ul>
                                 <a href="#" class="btn btn-primary">Ver detalles</a>

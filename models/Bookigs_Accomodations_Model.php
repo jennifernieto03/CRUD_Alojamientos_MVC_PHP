@@ -35,8 +35,3 @@ class Bookings_AccomodationModel{
     
 }
 
-//pruebas
-    
-    /*$resultado = Bookings_Accomodation_Model::findAccomodationByUserID(1);
-    var_dump($resultado);*/
-    

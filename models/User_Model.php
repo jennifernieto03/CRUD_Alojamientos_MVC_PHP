@@ -1,8 +1,9 @@
 <?php
 
-require_once './config/database.php'; 
+require_once './config/database.php';
 
-class UserModel{
+class UserModel
+{
     public $id_user;
     public $username;
     public $password;
@@ -15,8 +16,17 @@ class UserModel{
         $this->id_role = $id_role;
     }
 
+    public static function findByUsername($username)
+    {
+        $pdo = Connection::getInstance()->getConnection();
+        $query = $pdo->prepare("SELECT * FROM users WHERE username = ?");
+        $query->execute([$username]);
+        return $query->fetch(PDO::FETCH_ASSOC); // Devuelve el usuario si existe
+    }
+
     //Obtener todos los usuarios
-    public static function all(){
+    public static function all()
+    {
         //conectandonos a la base de datos
         $pdo = Connection::getInstance()->getConnection();
         //haciendo la consulta
@@ -28,7 +38,8 @@ class UserModel{
     }
 
     //metodo para verificar correo y contraseña
-    public static function findByEmailAndPassword($username, $password){
+    public static function findByEmailAndPassword($username, $password)
+    {
         //conectandonos a la base de datos
         $pdo = Connection::getInstance()->getConnection();
         //haciendo la consulta
@@ -38,35 +49,12 @@ class UserModel{
         return $result;
     }
 
-   //metodo para agregar un usuario nuevo
-    public static function add($username, $password, $id_role){
+    //metodo para agregar un usuario nuevo
+    public static function add($username, $password, $id_role)
+    {
         $pdo = Connection::getInstance()->getConnection();
         $query = $pdo->prepare("INSERT INTO users (username, password, id_role) VALUES (?, ?, ?);");
         $result = $query->execute(["$username", "$password", $id_role]);
         return $result;
     }
-
-    /*
-    //agregar alojamientos
-    public static function delete($id_user){
-        $pdo = Connection::getInstance()->getConnection();
-        $query = $pdo->prepare("DELETE FROM users WHERE `users`.`id` = ?");
-        $result = $query->execute([$id_user]);
-        return $result;
-    }
-    //eliminar alojamientos
-    public static function findById($id_user){
-        $pdo = Connection::getInstance()->getConnection();
-        $query = $pdo->prepare("SELECT * FROM users WHERE id = ?");
-        $query->execute([$id_user]);
-        $result = $query->fetch(PDO::FETCH_ASSOC); 
-        return $result;
-    }
-    }*/
 }
-
-//Pruebas
-    /*
-    $resultado = UserModel::findByEmailAndPassword("Jennifer123", "123546");
-    var_dump($resultado);
-    */

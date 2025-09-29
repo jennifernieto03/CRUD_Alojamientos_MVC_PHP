@@ -62,26 +62,3 @@ class BookingsModel{
 
 
 }
-
-//pruebas
-    /*$datos = BookingsModel::all();
-    echo "<pre>";
-    var_dump($datos);   
-    echo "</pre>";*/
-    /*$resultado = BookingsModel::add(
-        2,
-        "2024-07-01",
-        "2024-07-10"
-    );
-    var_dump($resultado);*/
-
-    /*$resultado = BookingsModel::delete(
-        3
-    );
-    var_dump($resultado);*/
-
-    /*$datos = BookingsModel::findByUserId(2);
-    echo "<pre>";
-    var_dump($datos);
-    echo "</pre>";*/
-    

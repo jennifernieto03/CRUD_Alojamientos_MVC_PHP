@@ -1,0 +1,62 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Tarjeta de perfil */
+.perfil-card {
+    background-color: #6f42c1;
+    color: white;
+    border: none;
+}
+
+.profile-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid white;
+    object-fit: cover;
+    background-color: #fff;
+}
+
+/* Texto del perfil */
+.nombre-usuario {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.email-usuario {
+    font-size: 0.9rem;
+}
+
+/* Título de sección */
+.titulo-seccion {
+    color: #6f42c1;
+    font-weight: bold;
+}
+
+/* Tarjetas de alojamiento */
+.alojamiento-card {
+    border: 1px solid #ddd;
+    transition: transform 0.2s ease;
+}
+
+.alojamiento-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 10px rgba(111, 66, 193, 0.3);
+}
+
+.alojamiento-titulo {
+    color: #6f42c1;
+    font-weight: bold;
+}
+
+.alojamiento-descripcion {
+    font-size: 0.95rem;
+}
+
+.alojamiento-ubicacion,
+.alojamiento-resena {
+    font-size: 0.9rem;
+    color: #555;
+}

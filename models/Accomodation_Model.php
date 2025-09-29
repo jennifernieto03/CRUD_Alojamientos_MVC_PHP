@@ -37,7 +37,7 @@ class AccomodationModel{
     public static function add($name, $description, $ubication, $review, $image){
         //conectandonos a la base de datos
         $pdo = Connection::getInstance()->getConnection();
-        //haciendo la consulta
+        //haciendo la consultaz
         $query = $pdo->prepare("INSERT INTO accommodation_list (name, description, ubication, review, image)
                                 VALUES (?, ?, ?, ?, ?);");
         $result = $query->execute(["$name", "$description", "$ubication", $review, "$image"]);
@@ -57,12 +57,12 @@ class AccomodationModel{
 }
 
 // Probando datos
-
+/*
     $datos = AccomodationModel::all();
     echo "<pre>";
     var_dump($datos);
     echo "</pre>";
-
+*/
 /*$resultado = AccomodationModel::add(
     "Hostal El Sol", 
     "Alojamiento cómodo y céntrico", 
