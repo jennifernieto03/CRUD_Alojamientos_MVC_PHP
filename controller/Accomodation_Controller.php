@@ -1,9 +1,9 @@
 <?php
 
-require_once "models/Accomodation_Model.php";
-require_once "models/Bookings_Accomodation_Model.php";
-require_once "../models/Bookings_Model.php";
-require_once "../interfaces/ICRUDAccomodations.php";
+require_once "./models/Accomodation_Model.php";
+require_once "./models/Bookigs_Accomodations_Model.php";
+require_once "./models/Bookings_Model.php";
+require_once "./interfaces/ICRUDAccomodations.php";
 
 class Accomodation_Controller implements ICRUDAccomodations{
 
