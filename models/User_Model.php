@@ -15,6 +15,18 @@ class UserModel{
         $this->id_role = $id_role;
     }
 
+    //Obtener todos los usuarios
+    public static function all(){
+        //conectandonos a la base de datos
+        $pdo = Connection::getInstance()->getConnection();
+        //haciendo la consulta
+        $query = $pdo->query("SELECT * FROM users");
+        //ejecutando la consulta
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_ASSOC); //[]
+        return $result;
+    }
+
     //metodo para verificar correo y contraseña
     public static function findByEmailAndPassword($username, $password){
         //conectandonos a la base de datos

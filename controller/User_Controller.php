@@ -17,7 +17,7 @@ class User_Controller{
     }
 
     public function getPassword(){
-        return this->password;
+        return $this->password;
     }
 
     public function setPassword($password){
@@ -27,7 +27,7 @@ class User_Controller{
     //metodo para obtener todos los usuarios
     public static function getUsers(){
         try{
-            $list_users = User_Model::all(); //metodo mapeado
+            $list_users = UserModel::all(); //metodo mapeado
             return $list_users;
         }catch(Error $error){
             return "Error al obtener los usuarios: " . $error;
